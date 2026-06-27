@@ -61,7 +61,26 @@ const CheckoutPage = () => {
         paymentMethod,
       };
       const { data } = await axiosInstance.post('/orders', payload);
+      
+      // Format WhatsApp Message
+      const adminPhone = '254723508125';
+      let message = `Hello LIDA FASHION WEAR, I would like to place an order!\n\n`;
+      message += `*Order ID:* ${data.order._id}\n\n`;
+      message += `*Items:*\n`;
+      cartItems.forEach(item => {
+        message += `- ${item.quantity}x ${item.productName} (Size: ${item.size || 'N/A'})\n`;
+      });
+      message += `\n*Total:* ${formatCurrency(cartTotal)}\n\n`;
+      message += `*Shipping Details:*\n`;
+      message += `Name: ${shipping.fullName}\n`;
+      message += `Phone: ${shipping.phone}\n`;
+      message += `Address: ${shipping.street}, ${shipping.city}, ${shipping.country}\n`;
+      message += `Payment Preference: ${paymentMethod}`;
+
+      const whatsappUrl = `https://wa.me/${adminPhone}?text=${encodeURIComponent(message)}`;
+      
       clearCart();
+      window.open(whatsappUrl, '_blank');
       navigate(`/order-success/${data.order._id}`, { state: { order: data.order } });
     } catch (err) {
       toast.error(err.response?.data?.message || 'Failed to place order. Please try again.');
