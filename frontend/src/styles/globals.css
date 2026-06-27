@@ -1,0 +1,394 @@
+/* ============================================================
+   LIDA FASHION WEAR — Global Styles & Luxury Design System
+   ============================================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Design Tokens ─────────────────────────────────────── */
+:root {
+  --color-bg:          #0A0A0A;
+  --color-surface:     #111111;
+  --color-surface-2:   #1A1A1A;
+  --color-gold:        #C9A84C;
+  --color-gold-light:  #E8C97A;
+  --color-gold-dim:    #8A6F2E;
+  --color-white:       #F5F0E8;
+  --color-muted:       #7A7A7A;
+  --color-error:       #C0392B;
+  --color-success:     #27AE60;
+
+  --font-display: 'Playfair Display', serif;
+  --font-body:    'Cormorant Garamond', serif;
+  --font-ui:      'Montserrat', sans-serif;
+
+  --transition-base: all 0.3s ease;
+  --shadow-gold:     0 4px 20px rgba(201, 168, 76, 0.15);
+  --shadow-gold-lg:  0 8px 40px rgba(201, 168, 76, 0.25);
+  --border-gold-dim: 1px solid rgba(138, 111, 46, 0.6);
+  --border-gold:     1px solid rgba(201, 168, 76, 0.4);
+}
+
+/* ─── Base Reset ────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-white);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* ─── Scrollbar Styling ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-gold-dim); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-gold); }
+
+/* ─── Gold Gradient Text (brand name) ───────────────────────── */
+.gold-text {
+  background: linear-gradient(135deg, #C9A84C 0%, #E8C97A 50%, #C9A84C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Typography Utilities ──────────────────────────────────── */
+.font-display { font-family: var(--font-display); }
+.font-body    { font-family: var(--font-body); }
+.font-ui      { font-family: var(--font-ui); }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--color-white);
+  line-height: 1.2;
+}
+
+p {
+  font-family: var(--font-body);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+/* ─── Button System ─────────────────────────────────────────── */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #C9A84C, #E8C97A, #C9A84C);
+  background-size: 200% auto;
+  color: #0A0A0A;
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: var(--transition-base);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-gold:hover {
+  background-position: right center;
+  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-gold:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--color-gold);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.75rem 2rem;
+  border: 1px solid var(--color-gold);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: var(--transition-base);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-outline:hover {
+  background: rgba(201, 168, 76, 0.1);
+  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.2);
+  transform: translateY(-1px);
+}
+
+.btn-outline:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ─── Card System ───────────────────────────────────────────── */
+.card {
+  background: var(--color-surface);
+  border: var(--border-gold-dim);
+  border-radius: 4px;
+  transition: var(--transition-base);
+}
+
+.card:hover {
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-gold);
+}
+
+/* ─── Section Dividers ──────────────────────────────────────── */
+.section-divider {
+  border: none;
+  border-top: 1px solid rgba(201, 168, 76, 0.2);
+  margin: 2rem 0;
+}
+
+/* ─── Form Inputs ───────────────────────────────────────────── */
+.input-luxury {
+  width: 100%;
+  background: var(--color-surface-2);
+  border: 1px solid rgba(138, 111, 46, 0.5);
+  color: var(--color-white);
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  padding: 0.75rem 1rem;
+  border-radius: 2px;
+  outline: none;
+  transition: var(--transition-base);
+}
+
+.input-luxury:focus {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 2px rgba(201, 168, 76, 0.15);
+}
+
+.input-luxury::placeholder {
+  color: var(--color-muted);
+}
+
+.label-luxury {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.4rem;
+}
+
+/* ─── Product Image Card Hover ──────────────────────────────── */
+.product-img-wrap {
+  overflow: hidden;
+  background: var(--color-surface-2);
+}
+
+.product-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.product-img-wrap:hover img {
+  transform: scale(1.05);
+}
+
+/* ─── Status Badges ─────────────────────────────────────────── */
+.badge { 
+  display: inline-flex; 
+  align-items: center;
+  padding: 0.25rem 0.75rem; 
+  border-radius: 2px; 
+  font-family: var(--font-ui);
+  font-size: 0.7rem; 
+  font-weight: 700; 
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ─── Tracking Timeline ─────────────────────────────────────── */
+.timeline-node {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--color-gold-dim);
+  background: var(--color-surface-2);
+  flex-shrink: 0;
+  transition: var(--transition-base);
+}
+
+.timeline-node.completed {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+}
+
+.timeline-node.current {
+  background: var(--color-gold);
+  border-color: var(--color-gold-light);
+  animation: pulseGold 2s ease infinite;
+}
+
+@keyframes pulseGold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.5); }
+  50%       { box-shadow: 0 0 0 8px rgba(201, 168, 76, 0); }
+}
+
+/* ─── Admin Sidebar ─────────────────────────────────────────── */
+.admin-sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.5rem;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: var(--transition-base);
+  border-left: 3px solid transparent;
+}
+
+.admin-sidebar-link:hover {
+  color: var(--color-gold);
+  background: rgba(201, 168, 76, 0.05);
+  border-left-color: rgba(201, 168, 76, 0.4);
+}
+
+.admin-sidebar-link.active {
+  color: var(--color-gold);
+  background: rgba(201, 168, 76, 0.08);
+  border-left-color: var(--color-gold);
+}
+
+/* ─── Page Transitions ──────────────────────────────────────── */
+.page-enter {
+  animation: fadeIn 0.35s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Loading Skeleton ──────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, 
+    var(--color-surface) 25%, 
+    var(--color-surface-2) 50%, 
+    var(--color-surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ─── Modal Overlay ─────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: var(--color-surface);
+  border: var(--border-gold);
+  border-radius: 4px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ─── Navbar ────────────────────────────────────────────────── */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(138, 111, 46, 0.3);
+}
+
+/* ─── Hero ──────────────────────────────────────────────────── */
+.hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.6) 0%,
+    rgba(10, 10, 10, 0.8) 60%,
+    rgba(10, 10, 10, 0.95) 100%
+  );
+}
+
+/* ─── Tracking Note Callout ─────────────────────────────────── */
+.tracking-note {
+  border-left: 3px solid var(--color-gold);
+  background: rgba(201, 168, 76, 0.05);
+  padding: 1rem 1.5rem;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--color-white);
+  border-radius: 0 4px 4px 0;
+}
+
+/* ─── Responsive Utilities ──────────────────────────────────── */
+.container-lida {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-lida { padding: 0 2rem; }
+}
+
+@media (min-width: 1280px) {
+  .container-lida { padding: 0 2.5rem; }
+}
